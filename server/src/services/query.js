@@ -11,7 +11,7 @@ function filterData (obj , ...arr) {
 
 function checkPermessions (user , matchUserPassword ) {
   if(user.role === 'admin') return true;
-  if(user._id.toString() === matchUserPassword.toString()) return true;
+  if(user._id.toString() === matchUserPassword._id.toString()) return true;
   return false
 
 }

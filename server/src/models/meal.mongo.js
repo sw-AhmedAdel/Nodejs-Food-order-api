@@ -67,5 +67,17 @@ const menuSchema = new mongoose.Schema({
   toObject:{virtuals: true}
 })
 
+
+
+/*productSchema.pre('remove' , async function(next) {
+  await this.model('review').deleteMany({product : this.product_id})
+  next();
+ 
+})
+*/
+menuSchema.pre(/^findOne/ , function(next){
+  next();
+})
+
 const Meal = mongoose.model('Meal', menuSchema);
 module.exports = Meal;

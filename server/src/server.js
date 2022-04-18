@@ -25,7 +25,7 @@ const {startMongo} = require('./services/mongo');
 async function startServer () {
 
   await startMongo();
- await reviews.deleteMany()
+   //await reviews.deleteMany()
   if(process.argv[2]==='i'){
     await loadAllRestaurant()
     await loadAllMeal();
