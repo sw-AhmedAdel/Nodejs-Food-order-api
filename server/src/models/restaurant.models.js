@@ -8,8 +8,11 @@ async function loadAllRestaurant() {
   console.log('loaded all Restaurants')
 }
 
-async function CreateRestaurant (restaurant) {
-  const newRestaurant = new Restaurant(restaurant);
+async function CreateRestaurant (req) {
+  const newRestaurant = new Restaurant({
+    ...req.body,
+    user: req.user._id,
+  });
   await newRestaurant.save();
   return newRestaurant;
 }

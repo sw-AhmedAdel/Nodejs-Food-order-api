@@ -6,7 +6,7 @@ const {
   UpdateRestaurant,
   DeleteRestaurant
 } = require('../../models/restaurant.models');
-const Restaurant = require('../../models/restaurant.mongo');
+
 const filterFeaturs = require('../../services/class.filter');
 
 async function httpGetAllRestaurant(req ,res ,next) {
@@ -42,7 +42,7 @@ async function httpGetSingleRestaurant (req ,res ,next) {
 
 
 async function httpCreateRestaurant (req ,res ,next) {
-  const restaurant = await CreateRestaurant(req.body);
+  const restaurant = await CreateRestaurant(req);
   return res.status(201).json({
     status:'success',
     restaurant

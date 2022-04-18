@@ -14,12 +14,12 @@ const {
 } = require('./restaurant.controller')
 
 restaurantRoute.use(catchAsync(authenticate));
-restaurantRoute.use(authorized('admin'));
-
-restaurantRoute.post('/' , catchAsync(httpCreateRestaurant));
 restaurantRoute.get('/' , catchAsync(httpGetAllRestaurant));
+restaurantRoute.get('/get/:id' , catchAsync(httpGetSingleRestaurant));
+
+restaurantRoute.use(authorized('admin'));
+restaurantRoute.post('/' , catchAsync(httpCreateRestaurant));
 restaurantRoute.delete('/delete/:id' , catchAsync(httpDeleteRestaurant));
 restaurantRoute.patch('/update/:id' , catchAsync(httpUpdateRestaurant));
-restaurantRoute.get('/get/:id' , catchAsync(httpGetSingleRestaurant));
 
 module.exports = restaurantRoute;
