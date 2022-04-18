@@ -9,6 +9,14 @@ function filterData (obj , ...arr) {
   return filter;
 }
 
+function checkPermessions (user , matchUserPassword ) {
+  if(user.role === 'admin') return true;
+  if(user._id.toString() === matchUserPassword.toString()) return true;
+  return false
+
+}
+
 module.exports = {
-  filterData
+  filterData,
+  checkPermessions
 }

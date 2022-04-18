@@ -5,7 +5,7 @@ const {loadAllRestaurant} = require('./models/restaurant.models');
 const {loadAllMeal} = require('./models/meal.modles');
 const Meal = require('./models/meal.mongo');
 const restaurant = require('./models/restaurant.mongo');
-
+const reviews = require('./models/review.mongo')
 require('dotenv').config();
 const PORT = process.env.PORT;
 /*
@@ -25,7 +25,7 @@ const {startMongo} = require('./services/mongo');
 async function startServer () {
 
   await startMongo();
- 
+ await reviews.deleteMany()
   if(process.argv[2]==='i'){
     await loadAllRestaurant()
     await loadAllMeal();
