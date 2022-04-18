@@ -46,5 +46,19 @@ restaurantSchema.pre(/^find/ , function(next) {
   next();
 }) 
 
+restaurantSchema.virtual('meals', {
+   ref:'Meal',
+   foreignField:'restaurant',
+   localField:'_id',
+})
+
+restaurantSchema.pre(/^findOne/ , function(next){
+  this.populate({
+    path:'meals',
+    select:'name image desc mediumSize bigSize'
+  })
+  next();
+})
+
 const Restaurant = mongoose.model('Restaurant' , restaurantSchema);
 module.exports = Restaurant;

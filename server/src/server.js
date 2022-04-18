@@ -6,11 +6,15 @@ require('dotenv').config();
 const PORT = process.env.PORT;
 /*
 user
-restaurant >> kentake, burgetnking m pizzahut m macdkoneks
-name , logo , desc : Fast Food, meat, Chicken, Sandwiches , rating
-menu , name, price , size meduimprice, small, big, desc , isSpice, 
-order
-review
+ ok restaurant >> kentake, burgetnking m pizzahut m macdkoneks 
+ok name , logo , desc : Fast Food, meat, Chicken, Sandwiches , rating
+ok meals , name, price , size meduimprice, small, big, desc , isSpice, 
+
+git ppopulate and virtals
+review add review to meal and rating will be reflected on meal and the resturant
+
+// order
+menu
 */
 const {startMongo} = require('./services/mongo');
 
