@@ -69,12 +69,13 @@ reviewSchema.statics.calcAvgRatingsOnMeal = async function (meal_id) {
     }
   ])
 
- const restaurant = await Restaurant.findOneAndUpdate({name: meal.restaurantName })
- restaurant.ratingsAverage =statsMeals[0]?.numAvg || 0,
- restaurant.ratingsQuantity= statsMeals[0]?.numRatings || 0
- await restaurant.save();
+  await Restaurant.findByIdAndUpdate(meal.restaurant , {
+  ratingsAverage : statsMeals[0]?.numAvg || 0,
+  ratingsQuantity :  statsMeals[0]?.numRatings || 0
+ })
   
 }
+
 reviewSchema.post('save' , async function() {
   const review = this;
   await review.constructor.calcAvgRatingsOnMeal(review.meal)
