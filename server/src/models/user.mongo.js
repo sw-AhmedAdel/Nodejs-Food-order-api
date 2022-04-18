@@ -39,18 +39,8 @@ const userScheam = new mongoose.Schema({
     enum:['admin','user'],
     default:'user',
   }
-  ,
-   gender: {
-     type:String,
-     required:[true,'Please provie your gender'],
-     enum:{
-       values:['male','female'],
-       message:'Gender must be male, female'
-     }
-   },
-   likedSong: [String],
-   playlist:[String],
- 
+ ,
+  
   passwordChangedAt : Date,
   passwordResetToken : String ,
   passwordResetExpires : Date,
