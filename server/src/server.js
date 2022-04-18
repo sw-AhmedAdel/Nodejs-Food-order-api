@@ -8,7 +8,7 @@ const PORT = process.env.PORT;
 user
 restaurant >> kentake, burgetnking m pizzahut m macdkoneks
 name , logo , desc : Fast Food, meat, Chicken, Sandwiches , rating
-menu
+menu , name, price , size meduimprice, small, big, desc , isSpice, 
 order
 review
 */
