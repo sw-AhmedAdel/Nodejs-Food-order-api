@@ -55,7 +55,7 @@ restaurantSchema.virtual('meals', {
 restaurantSchema.pre(/^findOne/ , function(next){
   this.populate({
     path:'meals',
-    select:'name image desc mediumSize bigSize'
+    select:'name image desc mediumSize bigSize -restaurant smallSize'
   })
   next();
 })

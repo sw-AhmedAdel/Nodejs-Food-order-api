@@ -57,6 +57,10 @@ const menuSchema = new mongoose.Schema({
     type: Number,
     required:true,
   },
+  category:{
+    type: String,
+    required:true,
+  }
 }, {
   timestamps: true,
   toJSON:{virtuals: true},

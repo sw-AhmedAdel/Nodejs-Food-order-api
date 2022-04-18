@@ -1,13 +1,13 @@
 const Meal = require('./meal.mongo');
 const fs= require('fs');
 const path = require('path');
-/*
+
 async function loadAllMeal() {
-  const Meals = JSON.parse(fs.readFileSync(path.join(__dirname,'..','..','data','Meals.json')));
-  await Meal.create(Meals);
+  const meals = JSON.parse(fs.readFileSync(path.join(__dirname,'..','..','data','meals.json')));
+  await Meal.create(meals);
   console.log('loaded all Meals')
 }
-*/
+
 async function CreateMeal (req) {
   const newMeal = new Meal({
     ...req.body,
@@ -49,6 +49,6 @@ module.exports = {
   GetAllMeal,
   UpdateMeal,
   DeleteMeal,
- // loadAllMeal
+  loadAllMeal
 }
 
