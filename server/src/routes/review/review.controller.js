@@ -75,7 +75,7 @@ async function httpUpdateReview (req ,res ,next) {
   }
  
   const Review = await UpdateReview(req.body , reviewid);
-  return res.status(201).json({
+  return res.status(200).json({
     status:'success',
     Review
   })
@@ -97,7 +97,7 @@ async function httpDeleteReview (req ,res ,next) {
     return next(new appError('You are not authorized to do this action'));
   }
     await DeleteReview(reviewid);
-    return res.status(201).json({
+    return res.status(200).json({
     status:'success',
   })
 }

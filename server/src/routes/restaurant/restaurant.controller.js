@@ -6,7 +6,7 @@ const {
   UpdateRestaurant,
   DeleteRestaurant
 } = require('../../models/restaurant.models');
-
+const {GetAllMeal} = require('../../models/meal.modles')
 const filterFeaturs = require('../../services/class.filter');
 
 async function httpGetAllRestaurant(req ,res ,next) {
@@ -57,7 +57,7 @@ async function httpUpdateRestaurant (req ,res ,next) {
     return next(new appError ('restaurant is not extis')); 
   }
   const restaurant = await UpdateRestaurant(req.body , id);
-  return res.status(201).json({
+  return res.status(200).json({
     status:'success',
     restaurant
   })
@@ -67,22 +67,36 @@ async function httpUpdateRestaurant (req ,res ,next) {
 async function httpDeleteRestaurant (req ,res ,next) {
  
   const {id} = req.params;
-  const is_exsits = await GetSingleRestaurant({_id : id});
-  if(!is_exsits) {
+  const restaurant = await GetSingleRestaurant({_id : id});
+  if(!restaurant) {
     return next(new appError ('restaurant is not extis')); 
   }
  
-    await DeleteRestaurant(id);
-    return res.status(201).json({
+    await restaurant.remove();
+    return res.status(200).json({
     status:'success',
   })
 }
 
+async function httpGetResturantMeals(req ,res ,next) {
+  const {resid} = req.params;
+  const restaurant = await GetSingleRestaurant({_id : resid});
+  if(!restaurant) {
+    return next(new appError ('restaurant is not extis')); 
+  }
+  const meals = await GetAllMeal({restaurant: resid})
+  return res.status(200).json({
+    status:'success',
+    results:meals.length,
+    meals,
+  })
+}
 
 module.exports = {
   httpCreateRestaurant,
   httpDeleteRestaurant,
   httpGetAllRestaurant,
   httpGetSingleRestaurant,
-  httpUpdateRestaurant
+  httpUpdateRestaurant,
+  httpGetResturantMeals
 }

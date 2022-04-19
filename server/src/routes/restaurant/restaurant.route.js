@@ -10,12 +10,14 @@ const {
   httpDeleteRestaurant,
   httpGetAllRestaurant,
   httpGetSingleRestaurant,
-  httpUpdateRestaurant
+  httpUpdateRestaurant,
+  httpGetResturantMeals
 } = require('./restaurant.controller')
 
 restaurantRoute.use(catchAsync(authenticate));
 restaurantRoute.get('/' , catchAsync(httpGetAllRestaurant));
 restaurantRoute.get('/get/:id' , catchAsync(httpGetSingleRestaurant));
+restaurantRoute.get('/meals/:resid', catchAsync(httpGetResturantMeals));
 
 restaurantRoute.use(authorized('admin'));
 restaurantRoute.post('/' , catchAsync(httpCreateRestaurant));

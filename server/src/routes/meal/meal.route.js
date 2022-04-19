@@ -10,12 +10,14 @@ const {
   httpDeleteMeal,
   httpGetAllMeal,
   httpGetSingleMeal,
-  httpUpdateMeal
+  httpUpdateMeal,
+  httpGetReviewsForMeal
 } = require('./meal.controller')
 
 mealRoute.use(catchAsync(authenticate));
 mealRoute.get('/' , catchAsync(httpGetAllMeal));
 mealRoute.get('/get/:id' , catchAsync(httpGetSingleMeal));
+mealRoute.get('/reviews/:mealid' , catchAsync(httpGetReviewsForMeal))
 
 mealRoute.use(authorized('admin'));
 mealRoute.post('/' , catchAsync(httpCreateMeal));

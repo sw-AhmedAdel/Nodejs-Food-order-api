@@ -6,7 +6,7 @@ const {
   UpdateMeal,
   DeleteMeal
 } = require('../../models/meal.modles');
-
+const {GetAllReview} = require('../../models/review.models')
 const filterFeaturs = require('../../services/class.filter');
 
 async function httpGetAllMeal (req ,res ,next) {
@@ -57,7 +57,7 @@ async function httpUpdateMeal (req ,res ,next) {
     return next(new appError ('meal is not extis')); 
   }
   const meal = await UpdateMeal(req.body , id);
-  return res.status(201).json({
+  return res.status(200).json({
     status:'success',
     meal
   })
@@ -67,22 +67,36 @@ async function httpUpdateMeal (req ,res ,next) {
 async function httpDeleteMeal (req ,res ,next) {
  
   const {id} = req.params;
-  const is_exsits = await GetSingleMeal({_id : id});
-  if(!is_exsits) {
+  const meal = await GetSingleMeal({_id : id});
+  if(!meal) {
     return next(new appError ('meal is not extis')); 
   }
  
-    await DeleteMeal(id);
-    return res.status(201).json({
+    await meal.remove();
+    return res.status(200).json({
     status:'success',
   })
 }
 
+async function httpGetReviewsForMeal (req , res ,next) {
+  const {mealid} = req.params;
+  const meal = await GetSingleMeal({_id : mealid});
+  if(!meal) {
+    return next(new appError('Meal is not exits'));
+  }
+  const reviews = await GetAllReview({meal : meal._id});
+  return res.status(200).json({
+    status:'success',
+    results:reviews.length,
+    reviews,
+  })
+}
 
 module.exports = {
   httpCreateMeal,
   httpDeleteMeal,
   httpGetAllMeal,
   httpGetSingleMeal,
-  httpUpdateMeal
+  httpUpdateMeal,
+  httpGetReviewsForMeal
 }
