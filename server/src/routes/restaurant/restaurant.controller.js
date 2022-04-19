@@ -8,7 +8,8 @@ const {
 } = require('../../models/restaurant.models');
 const {GetAllMeal} = require('../../models/meal.modles')
 const filterFeaturs = require('../../services/class.filter');
-
+const Review = require('../../models/review.mongo');
+const Meal = require('../../models/meal.mongo');
 async function httpGetAllRestaurant(req ,res ,next) {
   const filter = {...req.body};
   const excluding =['sort','page','skip'];
@@ -66,12 +67,22 @@ async function httpUpdateRestaurant (req ,res ,next) {
 
 async function httpDeleteRestaurant (req ,res ,next) {
  
-  const {id} = req.params;
-  const restaurant = await GetSingleRestaurant({_id : id});
+  const {restaurantid} = req.params;
+  const restaurant = await GetSingleRestaurant({_id : restaurantid});
   if(!restaurant) {
     return next(new appError ('restaurant is not extis')); 
   }
  
+    // before delete the restaurant
+  // 1) get the all meals thet related to the restaurant
+  // 2) delete all reviews that related to the meals
+  // 3 remove the meals
+  // 4) remove the restaurant
+  const meals = await Meal.find({_restaurant: restaurantid})
+  for(const meal of meals) {
+    await Review.deleteMany({meal : meal._id})
+  }
+  await Meal.deleteMany({restaurant : restaurantid})
     await restaurant.remove();
     return res.status(200).json({
     status:'success',

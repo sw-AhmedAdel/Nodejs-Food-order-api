@@ -21,7 +21,7 @@ restaurantRoute.get('/meals/:resid', catchAsync(httpGetResturantMeals));
 
 restaurantRoute.use(authorized('admin'));
 restaurantRoute.post('/' , catchAsync(httpCreateRestaurant));
-restaurantRoute.delete('/delete/:id' , catchAsync(httpDeleteRestaurant));
+restaurantRoute.delete('/delete/:restaurantid' , catchAsync(httpDeleteRestaurant));
 restaurantRoute.patch('/update/:id' , catchAsync(httpUpdateRestaurant));
 
 module.exports = restaurantRoute;
