@@ -25,10 +25,12 @@ const {startMongo} = require('./services/mongo');
 async function startServer () {
 
   await startMongo();
+   //await reviews.deleteMany()
   if(process.argv[2]==='i'){
     await loadAllRestaurant()
     await loadAllMeal();
   }
+  
   server.listen(PORT , () => {
   console.log('running server');
   })

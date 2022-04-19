@@ -2,7 +2,7 @@
   {
     "user":"625d87cb16301e96e67ee6a1",
     "restaurant":"625e1fcc713b9a4ffcb7e270",
-    "name":"12 pc chicken",
+    "mealName":"12 pc chicken",
     "restaurantName":"kentucky",
     "desc":"12 pc chicken + 3 plain rice + 1 Family fries + 1 Large coleslaw + 4 buns + Drink ",
     "image":"image.jpeg",
@@ -13,7 +13,7 @@
   {
     "user":"625d87cb16301e96e67ee6a1",
     "restaurant":"625e1fcc713b9a4ffcb7e270",
-    "name":"16 pc chicken ",
+    "mealName":"16 pc chicken ",
     "restaurantName":"kentucky",
     "desc":"16 pc chicken + 1 large coleslaw + family fries + 5 bun + 1 L Drink",
     "image":"image.jpeg",
@@ -24,7 +24,7 @@
   {
     "user":"625d87cb16301e96e67ee6a1",
     "restaurant":"625e1fcc713b9a4ffcb7e270",
-    "name":"Monster combo",
+    "mealName":"Monster combo",
     "restaurantName":"kentucky",
     "desc":"Sandwich + Fries + Drink ",
     "image":"image.jpeg",
@@ -35,7 +35,7 @@
   {
     "user":"625d87cb16301e96e67ee6a1",
     "restaurant":"625e1fcc713b9a4ffcb7e270",
-    "name":"Mighty combo",
+    "mealName":"Mighty combo",
     "restaurantName":"kentucky",
     "desc":"12 pc chicken + 3 plain rice + 1 Family fries + 1 Large coleslaw + 4 buns + Drink ",
     "image":"image.jpeg",
@@ -46,7 +46,7 @@
   {
     "user":"625d87cb16301e96e67ee6a1",
     "restaurant":"625e1fcc713b9a4ffcb7e271",
-    "name":"Tower Chicken Burger",
+    "mealName":"Tower Chicken Burger",
     "restaurantName":"burger king",
     "desc":"Bun 4 inch, 2 pcs chicken burger patty, mayonnaise, American cheese, lettuce",
     "image":"image.jpeg",
@@ -56,7 +56,7 @@
   },  {
     "user":"625d87cb16301e96e67ee6a1",
     "restaurant":"625e1fcc713b9a4ffcb7e271",
-    "name":"Cheese Whopper Junior",
+    "mealName":"Cheese Whopper Junior",
     "restaurantName":"burger king",
     "desc":"Bun 4 inch, burger patty, American cheese, mayonnaise, lettuce, tomato, onion, ketchup, pickles",
     "image":"image.jpeg",
@@ -66,7 +66,7 @@
   },  {
     "user":"625d87cb16301e96e67ee6a1",
     "restaurant":"625e1fcc713b9a4ffcb7e271",
-    "name":" Chicken Whopper",
+    "mealName":" Chicken Whopper",
     "restaurantName":"burger king",
     "desc":"Bun 5 inch, grilled chicken patty, tomatoes, lettuce and mayonnaise",
     "image":"image.jpeg",
@@ -76,7 +76,7 @@
   },  {
     "user":"625d87cb16301e96e67ee6a1",
     "restaurant":"625e1fcc713b9a4ffcb7e271",
-    "name":"Cheese Burger",
+    "mealName":"Cheese Burger",
     "restaurantName":"burger king",
     "desc":"Bun 4 inch, burger patty, cheese, ketchup, mustard, pickles",
     "image":"image.jpeg",
@@ -87,7 +87,7 @@
   {
     "user":"625d87cb16301e96e67ee6a1",
     "restaurant":"625e1fcc713b9a4ffcb7e272",
-    "name":"McRoyale",
+    "mealName":"McRoyale",
     "restaurantName":"mcdonald's",
     "desc":"The McRoyale has it all! A juicy beef patty accompanied by cheese,covered with our special McRoyale sauce, crispy lettuce, fresh tomatoes, zesty onions and pickles all wrapped in a sesame seed bun.",
     "image":"image.jpeg",
@@ -98,7 +98,7 @@
   {
     "user":"625d87cb16301e96e67ee6a1",
     "restaurant":"625e1fcc713b9a4ffcb7e272",
-    "name":"Big Mac®",
+    "mealName":"Big Mac®",
     "restaurantName":"Mouthwatering perfection is all about two 100% beef patties, that unbeatably tasty Big Mac sauce, melting signature cheese, crisp shredded lettuce, onions, pickles and a bun in the middle all between a toasted sesame seed bun. You know you want to.",
     "desc":"Sandwich + Fries + Drink ",
     "image":"image.jpeg",
@@ -108,7 +108,7 @@
   },{
     "user":"625d87cb16301e96e67ee6a1",
     "restaurant":"625e1fcc713b9a4ffcb7e272",
-    "name":"Big Tasty",
+    "mealName":"Big Tasty",
     "restaurantName":"mcdonald's",
     "desc":"What makes our Big Tasty so tasty? It’s the juicy beef patty smothered in three extraordinary slices of Emmental cheese, and topped with sliced tomato, shredded lettuce, onions and that special Big Tasty sauce. ",
     "image":"image.jpeg",
@@ -118,7 +118,7 @@
   },{
     "user":"625d87cb16301e96e67ee6a1",
     "restaurant":"625e1fcc713b9a4ffcb7e272",
-    "name":"Double Big Tasty®",
+    "mealName":"Double Big Tasty®",
     "restaurantName":"mcdonald's",
     "desc":"When one Big Tasty just isn’t enough, go for the Double Big Tasty. It's not only one but two juicy beef patties smothered between slices of emmental cheese, topped with sliced tomato, shredded lettuce, onions and that special Big Tasty sauce.",
     "image":"image.jpeg",

@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Restaurant = require('./restaurant.mongo');
 const mealSchema = new mongoose.Schema({
 
-  name:{
+  mealName:{
     type: String,
     required:true,
     unique:true,
@@ -42,10 +42,6 @@ const mealSchema = new mongoose.Schema({
     type:Number,
     default:0
   },
-  isSpicy: {
-    type: Boolean,
-    default: false,
-  },
   smallSize: {
     type: Number,
   },
@@ -60,7 +56,8 @@ const mealSchema = new mongoose.Schema({
   category:{
     type: String,
     required:true,
-  }
+  },
+ 
 }, {
   timestamps: true,
   toJSON:{virtuals: true},
@@ -68,6 +65,8 @@ const mealSchema = new mongoose.Schema({
 })
 
 
+mealSchema.index({mealName:1});
+mealSchema.index({category:1})
 
 mealSchema.statics.calAvgResturantRatings = async function(restaurant_id) {
 

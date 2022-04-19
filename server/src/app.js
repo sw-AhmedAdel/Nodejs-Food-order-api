@@ -21,7 +21,7 @@ app.use(mongoSanitize());
 app.use(xss());
 
 app.use(hpp({ // 
-  whitelist:['artist,name']
+  whitelist:['restaurantName,name','mealName','category']
 }))
 
 app.use(express.json());

@@ -1,0 +1,22 @@
+[
+  {
+    "tax": 499,
+    "deliveryFee": 799,
+    "items": [
+      {
+        "name": "12 pc chicken",
+        "bigSize": 150,
+        "image": "image",
+        "quantity": 3,
+        "meal": "625e35081fe06d69cc359f47"
+      },
+      {
+        "name": "16 pc chicken",
+        "mediumSize": 100,
+        "image": "image",
+        "quantity": 2,
+        "meal": "625e35081fe06d69cc359f48"
+      }
+    ]
+  }
+]

@@ -47,4 +47,14 @@ const orderShcema = new mongoose.Schema({
   toObject:{virtuals: true}
 })
 
+
+orderShcema.pre(/^find/ , function(next){
+  this.populate({
+    path:'user',
+    select:'name image'
+  })
+  next();
+})
+
 const Order = mongoose.model('Order', orderShcema );
+module.exports=Order;

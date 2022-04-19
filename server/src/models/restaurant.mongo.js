@@ -2,7 +2,7 @@
 const mongoose = require('mongoose');
 const restaurantSchema = new mongoose.Schema({
 
-  name: {
+  restaurantName: {
     type :String,
     required:true,
     unique:true,
@@ -36,6 +36,8 @@ const restaurantSchema = new mongoose.Schema({
   toJSON: {virtuals : true},
   toObject: {virtuals : true}
 })
+
+restaurantSchema.index({restaurantName:1})
 
 restaurantSchema.pre(/^find/ , function(next) {
   this.populate({

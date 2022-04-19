@@ -87,6 +87,10 @@ reviewSchema.post(/^findOneAnd/, async function(review) {
 });
 
 
+reviewSchema.index({user: 1 , meal: 1},{
+  unique:true,
+})
+
 reviewSchema.pre(/^find/ , function(next) {
   this.populate({
     path:'user',
