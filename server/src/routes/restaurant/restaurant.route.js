@@ -12,7 +12,9 @@ const {
   httpGetSingleRestaurant,
   httpUpdateRestaurant,
   httpGetResturantMeals,
-  httpGetRandomResturants
+  httpGetRandomResturants,
+  uploadImageMiddleware,
+  resizeImageMiddleWare
 } = require('./restaurant.controller')
 
 restaurantRoute.use(catchAsync(authenticate));
@@ -24,6 +26,6 @@ restaurantRoute.get('/random', catchAsync(httpGetRandomResturants))
 restaurantRoute.use(authorized('admin'));
 restaurantRoute.post('/' , catchAsync(httpCreateRestaurant));
 restaurantRoute.delete('/delete/:restaurantid' , catchAsync(httpDeleteRestaurant));
-restaurantRoute.patch('/update/:id' , catchAsync(httpUpdateRestaurant));
+restaurantRoute.patch('/update/:id', uploadImageMiddleware, catchAsync(resizeImageMiddleWare), catchAsync(httpUpdateRestaurant));
 
 module.exports = restaurantRoute;

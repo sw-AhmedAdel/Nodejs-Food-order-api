@@ -11,6 +11,39 @@ const {GetAllMeal} = require('../../models/meal.modles')
 const filterFeaturs = require('../../services/class.filter');
 const Review = require('../../models/review.mongo');
 const Meal = require('../../models/meal.mongo');
+const multer = require('multer');
+const sharp = require('sharp');
+
+const multerStorage = multer.memoryStorage();
+const multerFilter = (req ,file , cb) =>{
+  if(file.mimetype.startsWith('image')){
+    cb(null , true)
+  }else {
+   return cb(new appError('Please uplaod an image'));
+  }
+}
+const uplaod = multer({
+  storage: multerStorage,
+  fileFilter: multerFilter,
+})
+
+const resizeImageMiddleWare = async (req ,res ,next) => {
+   if(!req.file) {
+     next();
+   }
+   req.body.logo =`restaurant-${req.params.id}-${Date.now()}.jpeg`;
+   await sharp(req.file.buffer)
+   .resize({width :200 , height: 200})
+   .toFormat('jpeg')
+   .jpeg({quality:90})
+   .toFile(`public/images/restaurants/${req.body.logo}`);
+   
+   next();
+}
+
+
+const uploadImageMiddleware = uplaod.single('logo');
+
 async function httpGetAllRestaurant(req ,res ,next) {
   const filter = {...req.body};
   const excluding =['sort','page','skip'];
@@ -58,6 +91,7 @@ async function httpUpdateRestaurant (req ,res ,next) {
   if(!is_exsits) {
     return next(new appError ('restaurant is not extis')); 
   }
+  console.log(req.body.logo)
   const restaurant = await UpdateRestaurant(req.body , id);
   return res.status(200).json({
     status:'success',
@@ -121,5 +155,7 @@ module.exports = {
   httpGetSingleRestaurant,
   httpUpdateRestaurant,
   httpGetResturantMeals,
-  httpGetRandomResturants
+  httpGetRandomResturants,
+  uploadImageMiddleware,
+  resizeImageMiddleWare
 }
