@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const Restaurant = require('./restaurant.mongo');
-const menuSchema = new mongoose.Schema({
+const mealSchema = new mongoose.Schema({
 
   name:{
     type: String,
@@ -69,7 +69,7 @@ const menuSchema = new mongoose.Schema({
 
 
 
-menuSchema.statics.calAvgResturantRatings = async function(restaurant_id) {
+mealSchema.statics.calAvgResturantRatings = async function(restaurant_id) {
 
   const stats = await Meal.aggregate([
     {
@@ -90,12 +90,12 @@ menuSchema.statics.calAvgResturantRatings = async function(restaurant_id) {
  })
 }
 
-menuSchema.pre(/^findOne/ , function(next){
+mealSchema.pre(/^findOne/ , function(next){
   next();
 })
 
 // here delete all reviews that related to the meal
-menuSchema.pre('remove', async function(next) {
+mealSchema.pre('remove', async function(next) {
   const meal = this;
   await this.model('Review').deleteMany({meal : meal._id})
   next();
@@ -103,12 +103,12 @@ menuSchema.pre('remove', async function(next) {
 
 //here after deleting the meal i want to recalculate the avgRatings of the left meals to recalculate
 //the avgRatings on the resturant
-menuSchema.post('remove', async function() {
+mealSchema.post('remove', async function() {
   const meal = this;
   await this.constructor.calAvgResturantRatings(meal.restaurant)
   
 })
 
 
-const Meal = mongoose.model('Meal', menuSchema);
+const Meal = mongoose.model('Meal', mealSchema);
 module.exports = Meal;

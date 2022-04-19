@@ -42,6 +42,12 @@ async function DeleteRestaurant(id) {
   await Restaurant.findByIdAndDelete(id);
 }
 
+async function GetRandomResturants (){
+  const restaurants = Restaurant.aggregate([
+    {$sample: {size: 10}}
+  ])
+  return restaurants;
+}
 
 module.exports = {
   CreateRestaurant,
@@ -49,6 +55,7 @@ module.exports = {
   GetAllRestaurant,
   UpdateRestaurant,
   DeleteRestaurant,
-  loadAllRestaurant
+  loadAllRestaurant,
+  GetRandomResturants
 }
 

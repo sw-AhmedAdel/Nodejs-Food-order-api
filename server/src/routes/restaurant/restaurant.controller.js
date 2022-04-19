@@ -4,7 +4,8 @@ const {
   GetSingleRestaurant,
   GetAllRestaurant,
   UpdateRestaurant,
-  DeleteRestaurant
+  DeleteRestaurant,
+  GetRandomResturants
 } = require('../../models/restaurant.models');
 const {GetAllMeal} = require('../../models/meal.modles')
 const filterFeaturs = require('../../services/class.filter');
@@ -104,11 +105,21 @@ async function httpGetResturantMeals(req ,res ,next) {
   })
 }
 
+async function httpGetRandomResturants(req ,res ,next) {
+  const restaurants = await GetRandomResturants();
+  return res.status(200).json({
+    status:'success',
+    results: restaurants.length,
+    restaurants
+  })
+}
+
 module.exports = {
   httpCreateRestaurant,
   httpDeleteRestaurant,
   httpGetAllRestaurant,
   httpGetSingleRestaurant,
   httpUpdateRestaurant,
-  httpGetResturantMeals
+  httpGetResturantMeals,
+  httpGetRandomResturants
 }

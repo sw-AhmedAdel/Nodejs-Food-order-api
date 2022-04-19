@@ -11,13 +11,15 @@ const {
   httpGetAllRestaurant,
   httpGetSingleRestaurant,
   httpUpdateRestaurant,
-  httpGetResturantMeals
+  httpGetResturantMeals,
+  httpGetRandomResturants
 } = require('./restaurant.controller')
 
 restaurantRoute.use(catchAsync(authenticate));
 restaurantRoute.get('/' , catchAsync(httpGetAllRestaurant));
 restaurantRoute.get('/get/:id' , catchAsync(httpGetSingleRestaurant));
 restaurantRoute.get('/meals/:resid', catchAsync(httpGetResturantMeals));
+restaurantRoute.get('/random', catchAsync(httpGetRandomResturants))
 
 restaurantRoute.use(authorized('admin'));
 restaurantRoute.post('/' , catchAsync(httpCreateRestaurant));
