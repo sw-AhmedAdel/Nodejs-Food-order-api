@@ -9,6 +9,39 @@ const {
 const {GetAllReview} = require('../../models/review.models')
 const filterFeaturs = require('../../services/class.filter');
 
+const multer = require('multer');
+const sharp = require('sharp');
+
+const multerStorage = multer.memoryStorage();
+const multerFilter = (req ,file , cb) =>{
+  if(file.mimetype.startsWith('image')){
+    cb(null , true)
+  }else {
+   return cb(new appError('Please uplaod an image'));
+  }
+}
+const uplaod = multer({
+  storage: multerStorage,
+  fileFilter: multerFilter,
+})
+
+const resizeImageMiddleWare = async (req ,res ,next) => {
+   if(!req.file) {
+     next();
+   }
+   req.body.image =`meals-${req.params.id}-${Date.now()}.jpeg`;
+   await sharp(req.file.buffer)
+   .resize({width :200 , height: 200})
+   .toFormat('jpeg')
+   .jpeg({quality:90})
+   .toFile(`public/images/meals/${req.body.image}`);
+   
+   next();
+}
+
+const uploadImageMiddleware = uplaod.single('image');
+
+
 async function httpGetAllMeal (req ,res ,next) {
   const filter = {...req.body};
   const excluding =['sort','page','skip'];
@@ -98,5 +131,7 @@ module.exports = {
   httpGetAllMeal,
   httpGetSingleMeal,
   httpUpdateMeal,
-  httpGetReviewsForMeal
+  httpGetReviewsForMeal,
+  uploadImageMiddleware,
+  resizeImageMiddleWare
 }

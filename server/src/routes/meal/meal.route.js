@@ -11,7 +11,9 @@ const {
   httpGetAllMeal,
   httpGetSingleMeal,
   httpUpdateMeal,
-  httpGetReviewsForMeal
+  httpGetReviewsForMeal,
+  uploadImageMiddleware,
+  resizeImageMiddleWare
 } = require('./meal.controller')
 
 mealRoute.use(catchAsync(authenticate));
@@ -22,6 +24,6 @@ mealRoute.get('/reviews/:mealid' , catchAsync(httpGetReviewsForMeal))
 mealRoute.use(authorized('admin'));
 mealRoute.post('/' , catchAsync(httpCreateMeal));
 mealRoute.delete('/delete/:id' , catchAsync(httpDeleteMeal));
-mealRoute.patch('/update/:id' , catchAsync(httpUpdateMeal));
+mealRoute.patch('/update/:id',uploadImageMiddleware ,catchAsync(resizeImageMiddleWare), catchAsync(httpUpdateMeal));
 
 module.exports = mealRoute;

@@ -31,6 +31,7 @@ const resizeImageMiddleWare = async (req ,res ,next) => {
    if(!req.file) {
      next();
    }
+   console.log(req.file)
    req.body.logo =`restaurant-${req.params.id}-${Date.now()}.jpeg`;
    await sharp(req.file.buffer)
    .resize({width :200 , height: 200})
