@@ -23,9 +23,8 @@ const restaurantSchema = new mongoose.Schema({
   },
   ratingsAverage : {
     type:Number,
-    min:[1 , 'Rating must be above 1'],
-    max:[5 ,'Rating must be bellow or equal 5.0'],
-    set: val => Math.round(val * 10) / 10 // 4.7
+    set: val => Math.round(val * 10) / 10, // 4.7
+    default:0
   },
   ratingsQuantity : {
     type:Number,
@@ -61,6 +60,5 @@ restaurantSchema.pre(/^findOne/ , function(next){
 })
 
  
-
 const Restaurant = mongoose.model('Restaurant' , restaurantSchema);
 module.exports = Restaurant;

@@ -78,12 +78,13 @@ async function httpDeleteRestaurant (req ,res ,next) {
   // 2) delete all reviews that related to the meals
   // 3 remove the meals
   // 4) remove the restaurant
-  const meals = await Meal.find({_restaurant: restaurantid})
+  
+  const meals = await Meal.find({restaurant: restaurantid})  
   for(const meal of meals) {
     await Review.deleteMany({meal : meal._id})
   }
   await Meal.deleteMany({restaurant : restaurantid})
-    await restaurant.remove();
+   await restaurant.remove();
     return res.status(200).json({
     status:'success',
   })

@@ -2,11 +2,13 @@
  {
    "name":"kentucky ",
    "logo":"logo.jpeg",
+   "_id": "625e1fcc713b9a4ffcb7e270",
    "user":"625d87cb16301e96e67ee6a1",
    "desc":"Fast Food, meat, Chicken, Sandwiches"
  } ,
  {
   "name":"burger king ",
+  "_id": "625e1fcc713b9a4ffcb7e271",
   "logo":"logo.jpeg",
   "user":"625d87cb16301e96e67ee6a1",
   "desc":"Fast Food, meat, Chicken, Sandwiches"
@@ -14,6 +16,7 @@
 {
   "name":"macdonald ",
   "logo":"logo.jpeg",
+  "_id": "625e1fcc713b9a4ffcb7e272",
   "user":"625d87cb16301e96e67ee6a1",
   "desc":"Fast Food, meat, Chicken, Sandwiches"
 } 

@@ -30,6 +30,8 @@ async function startServer () {
     await loadAllRestaurant()
     await loadAllMeal();
   }
+ 
+   
   server.listen(PORT , () => {
   console.log('running server');
   })
